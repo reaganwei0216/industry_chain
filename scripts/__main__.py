@@ -73,6 +73,13 @@ def parse(args):
         help='query target',
     )
 
+    parser_chain.add_argument(
+        '-d', '--direct',
+        action='store_true',
+        help='direct query',
+        default=False
+    )
+
     # command `fire`
     parser_fire = subparser.add_parser('fire', help='fire query')
     parser_fire.set_defaults(func=fire_query)
@@ -139,7 +146,10 @@ def jsprint(obj):
         return dump(obj)
 
     elif hasattr(obj, '__iter__'):
-        return dump(list(obj))
+        data = list(obj)
+        if len(data) == 1:
+            return dump(data[0])
+        return dump(data)
 
     else:
         raise TypeError()
@@ -170,6 +180,11 @@ def view_industry(args):
             yield obj
 
 def view_chain(args):
+    if args.direct:
+        for t in args.target:
+            yield industry_chain(None, t)
+        return
+
     for path, obj in search_industry(args):
         try:
             get = obj.fire_query()

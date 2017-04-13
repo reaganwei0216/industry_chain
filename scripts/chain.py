@@ -6,8 +6,13 @@ from .base import base_class
 import requests
 import bs4
 
+def get_url(id):
+    return f'http://ic.tpex.org.tw/introduce.php?ic={id}'
+
 class industry_chain(base_class):
-    def __init__(self, url):
+    def __init__(self, url, id=None):
+        if id is not None:
+            url = get_url(id)
         page = requests.get(url)
         soup = bs4.BeautifulSoup(page.content.decode('utf8'), 'lxml')
 
