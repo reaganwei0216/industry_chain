@@ -23,7 +23,7 @@ class industry(base_class):
         for item in sub_menu:
             self.append(sub_industry(item))
 
-    def query(self) -> industry_chain:
+    def fire_query(self) -> industry_chain:
         if self.link is None:
             raise RuntimeError('not a quariable object')
         return industry_chain(self.link)

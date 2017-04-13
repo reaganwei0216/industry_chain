@@ -69,5 +69,5 @@ class base_class(dict):
             raise TypeError()
         self.children.append(obj)
 
-    def query(self):
+    def fire_query(self):
         raise RuntimeError('query func not implemented')
