@@ -1,13 +1,13 @@
 from .base import base_class
 from .chain import industry_chain
-from os import path
 import requests
 import bs4
+from urllib.parse import urljoin
 
 root_url = r'http://ic.tpex.org.tw/'
 
 def solve_link(link :str):
-    fulllnk = path.join(root_url, link)
+    fulllnk = urljoin(root_url, link)
     page_id = link[link.find('=')+1:]
     return fulllnk, page_id
 
