@@ -40,10 +40,10 @@ def main():
     if hasattr(args, 'func'):
         jsprint(args.func(args))
     else:
-        parser.print_help()
+        print('error: command not found')
 
 def parse(args):
-    parser = argparse.ArgumentParser(prog='PROG', description='cli tool for accessing data on http://ic.tpex.org.tw/')
+    parser = argparse.ArgumentParser(prog='industry-chain', description='cli tool for accessing data on http://ic.tpex.org.tw/')
     subparser = parser.add_subparsers(help='commands')
 
     # command `industry`
