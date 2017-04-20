@@ -26,7 +26,7 @@ class industry(base_class):
     def fire_query(self) -> industry_chain:
         if self.link is None:
             raise RuntimeError('not a quariable object')
-        return industry_chain(self.link)
+        return industry_chain(self.id)
 
 class sub_industry(industry):
     def __init__(self, item):

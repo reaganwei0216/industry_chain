@@ -182,7 +182,7 @@ def view_industry(args):
 def view_chain(args):
     if args.direct:
         for t in args.target:
-            yield industry_chain(None, t)
+            yield industry_chain(t)
         return
 
     for path, obj in search_industry(args):
